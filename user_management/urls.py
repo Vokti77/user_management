@@ -2,7 +2,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
 from personal.views import (
@@ -21,6 +21,7 @@ urlpatterns = [
     path('', home_screen_view, name='home'),
     path('register/', register, name='register'),
     path('login/', login_view, name="login"), 
+    path('account/', include('account.urls', namespace='account')),
     path('logout/', logout_view, name="logout"), 
 
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
